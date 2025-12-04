@@ -8,15 +8,15 @@
 
 static bool registered = (aoc::registerDay(1, run_day01), true);
 
-void part1();
-void part2();
+void day01_1();
+void day01_2();
 
 void run_day01() {
-    part1();
-    part2();
+    day01_1();
+    day01_2();
 }
 
-void part1() {
+void day01_1() {
     Input input("input/day01.txt");
     auto lines = input.readLines();
 
@@ -37,8 +37,7 @@ void part1() {
     std::cout << "Answer: " << zeros << std::endl;
 }
 
-// FIXME: wrong answer
-void part2() {
+void day01_2() {
     Input input("input/day01.txt");
     auto lines = input.readLines();
 
@@ -52,11 +51,13 @@ void part2() {
         for (int i = 0; i < value; ++i) {
             dial += dir;
             if (dial > 99) {
-                clicks++;
                 dial = 0;
             } else if (dial < 0) {
-                clicks++;
                 dial = 99;
+            }
+
+            if (dial == 0) {
+                clicks++;
             }
         }
     }
